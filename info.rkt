@@ -1,6 +1,8 @@
 #lang setup/infotab
 (define name "Describe")
 (define collection "Describe")
+(define scribblings '(("scribblings/describe.scrbl" ())))
+
 (define blurb
   (list "This library provides routines to describe Racket objects."))
 (define scribblings '(("describe.scrbl" ())))
