@@ -1,10 +1,10 @@
 #lang scribble/doc
 
 @(require scribble/manual
-          (planet williams/describe/describe)
+          describe
           (for-label
            racket
-           (planet williams/describe/describe)))
+           describe))
 
 @title[#:tag "describe"]{Describe}
 
@@ -42,7 +42,7 @@ This library provides functions to describe Racket objects. Currently, the follo
 
 The describe library is available from the PLaneT repository.
 
-@defmodule[(planet williams/describe/describe)]
+@defmodule[describe]
 
 @table-of-contents[]
 
@@ -129,7 +129,7 @@ The following example demonstrates the varions function of the describe library.
 racket
 
 (require scheme/mpair)
-(require (planet williams/describe/describe))
+(require describe)
 
 ;;; Booleans
 (printf "~n--- Booleans ---~n")
