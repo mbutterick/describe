@@ -5,7 +5,7 @@
 (define blurb
   (list "This library provides routines to describe Racket objects."))
 (define categories '(io misc))
-(define primary-file "describe.rkt")
+(define primary-file "main.rkt")
 (define release-notes
   (list "The function float->string is now exported. It was also extended "
         "to support big floats from the Math Library. Note that descriptions "
