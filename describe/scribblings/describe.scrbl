@@ -8,11 +8,13 @@
 
 @title[#:tag "describe"]{Describe}
 
-M. Douglas Williams
 
-@(author+email @tt{M. Douglas Williams} "doug@cognidrome.org")
+@author[(author+email "M. Douglas Williams" "doug@cognidrome.org")]
 
 This library provides functions to describe Racket objects. Currently, the following types of objects are described:
+
+
+@margin-note{This is not the official version of Describe. It is the 1.5 version from PLaneT, retooled to use Racket's new package system, and with bigfloat support disabled (because of bugs related to v.5.3.x compatability.) The canonical version of Describe is on the @link["http://planet.racket-lang.org/display.ss?package=describe.plt&owner=williams" "PLaneT server"]. — MB}
 
 @itemize{
   @item{Booleans}
@@ -78,11 +80,8 @@ Examples:
 
 @scheme[(integer->string (expt 10 150))] -> "at least 10^102"
 
-@defproc[(float->string (x (or/c flonum? single-flonum? extflonum? bigfloat?))) string?]{
-Returns a string with the exact decimal value of the floating-point number @scheme[x]. This works for single precision, double precision, extended precision, and big floating-point values. Note that internally @scheme[x] is converted to an exact rational number as part of converting to a string and the following warning from the Arbitrary-Precision Floating-Point Numbers (Bigfloats) section in the Math Library is important.
-
-@bold{Be careful with exact conversions.} Bigfloats with large exponents may not fit in memory as integers or exact rationals. Worse, they might fit, but have all your RAM and swap space for lunch.
-}
+@defproc[(float->string (x (or/c flonum? single-flonum? extflonum?))) string?]{
+Returns a string with the exact decimal value of the floating-point number @scheme[x]. This works for single precision, double precision, and extended precision values. Note that internally @scheme[x] is converted to an exact rational number as part of converting to a string.}
 
 Examples:
 
@@ -95,8 +94,6 @@ Examples:
 @scheme[(float->string 0.1)] -> "0.1000000000000000055511151231257827021181583404541015625"
 
 @scheme[(float->string 0.1t0)] -> "0.1000000000000000000013552527156068805425093160010874271392822265625"
-
-@scheme[(float->string (bf 1/10))] -> "0.10000000000000000000000000000000000000007346839692639296924804603357639035486366659729825547009429698164240107871592044830322265625"
 
 @defproc[(describe (x any/c)) void?]{
 Prints a description of @scheme[x] to the current output port.}
@@ -168,9 +165,6 @@ racket
 (describe (sqrt 10))
 (describe (sqrt -10))
 (describe (+ (sqrt 10) (sqrt -10)))
-
-(describe (bf 1/10))
-(describe (bf "15e200000000"))
 
 ;;; Strings
 
@@ -344,8 +338,6 @@ Produces the following output.
 3.1622776601683795 is an inexact positive real number whose exact decimal value is 3.162277660168379522787063251598738133907318115234375
 0+3.1622776601683795i is an inexact positive imaginary number whose exact decimal value is 0+3.162277660168379522787063251598738133907318115234375i
 3.1622776601683795+3.1622776601683795i is an inexact complex number whose real part 3.1622776601683795 is an inexact positive real number whose exact decimal value is 3.162277660168379522787063251598738133907318115234375 and whose imaginary part 0+3.1622776601683795i is an inexact positive imaginary number whose exact decimal value is 0+3.162277660168379522787063251598738133907318115234375i
-(bf #e0.1000000000000000000000000000000000000001) is a positive big float with 128 bits of precision
-(bf "1.499999999999999999999999999999999999998e200000001") is a positive big float with 128 bits of precision
 
 --- Strings ---
 "abc" is an immutable string of length 3

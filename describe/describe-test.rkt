@@ -16,8 +16,7 @@
 ;;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;;
 
-(require math/bigfloat
-         racket/mpair)
+(require racket/mpair)
 (require (planet williams/describe/describe))
 
 ;;; Booleans
@@ -58,8 +57,6 @@
 (describe (sqrt -10))
 (describe (+ (sqrt 10) (sqrt -10)))
 
-(describe (bf 1/10))
-(describe (bf "15e200000000"))
 
 ;;; Strings
 

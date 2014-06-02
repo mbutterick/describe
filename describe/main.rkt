@@ -70,8 +70,7 @@
 ;;; 2.0.1    08/26/13 Added exact decimal value for floats. (MDW)
 ;;; 2.0.1    09/26/13 Added bigfloat support to float->string. (MDW)
 
-(require math/bigfloat
-         racket/extflonum
+(require racket/extflonum
          racket/mpair)
 
 ;;; (variant x) -> symbol
@@ -339,11 +338,7 @@
   ;                       ((extfl> x 0.0t0) +1.0)
   ;                       (else 0.0))
   ;                 (sgn x)))
-  (define sign (cond ((bigfloat? x)
-                      (cond ((bf< x 0.bf) -1.0)
-                            ((bf> x 0.bf) +1.0)
-                            (else 0.0)))
-                     ((extflonum? x)
+  (define sign (cond ((extflonum? x)
                       (cond ((extfl< x 0.0t0) -1.0)
                             ((extfl> x 0.0t0) +1.0)
                             (else 0.0)))
@@ -353,8 +348,7 @@
   ;(define exact-x (if (extflonum? x)
   ;                    (abs (extfl->exact x))
   ;                    (abs (inexact->exact x))))
-  (define exact-x (cond ((bigfloat? x) (abs (bigfloat->rational x)))
-                        ((extflonum? x) (abs (extfl->exact x)))
+  (define exact-x (cond ((extflonum? x) (abs (extfl->exact x)))
                         (else (inexact->exact x))))
   (define int (truncate exact-x))
   (define frac (- exact-x int))
@@ -421,20 +415,6 @@
          (format "~s is an extended precision (80-bit) floating point number whose exact decimal value is ~a"
                  x (float->string x)))))
 
-;;; (bigfloat-description x) -> string
-;;;   x : extflonum?
-;;; Returns a string describing the big float, x.
-(define (bigfloat-description x)
-  (cond ((eqv? x +inf.bf)
-         (format "~s is positive infinity" x))
-        ((eqv? x -inf.bf)
-         (format "~s is negative infinity" x))
-        ((eqv? x +nan.bf)
-         (format "~s is non-a-number" x))
-        (else
-         (format "~s is a ~a big float with ~a bits of precision"
-                 x (if (bfnegative? x) "negative" "positive")
-                 (bigfloat-precision x)))))
 
 ;;; (string-description str) -> string?
 ;;;   str : string?
@@ -795,8 +775,6 @@
          (number-description x))
         ((extflonum? x)
          (extflonum-description x))
-        ((bigfloat? x)
-         (bigfloat-description x))
         ((string? x)
          (string-description x))
         ((bytes? x)
@@ -863,7 +841,7 @@
  (integer->string
   (-> exact-integer? string?))
  (float->string
-  (-> (or/c flonum? single-flonum? extflonum? bigfloat?) string?))
+  (-> (or/c flonum? single-flonum? extflonum?) string?))
  (description
   (-> any/c string?))
  (describe
