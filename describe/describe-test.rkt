@@ -16,8 +16,8 @@
 ;;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;;;
 
-(require racket/mpair)
-(require (planet williams/describe/describe))
+(require racket/mpair
+         "main.rkt")
 
 ;;; Booleans
 (printf "~n--- Booleans ---~n")

@@ -1,7 +1,7 @@
 #lang racket
 
-(require racket/extflonum)
-(require (planet williams/describe/describe))
+(require racket/extflonum
+         "main.rkt")
 
 (printf "--- Using literals (extended precision) ---~n")
 (describe 0.1t0)

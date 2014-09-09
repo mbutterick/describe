@@ -1,6 +1,6 @@
 #lang racket
 
-(require (planet williams/describe/describe))
+(require "main.rkt")
 
 (printf "--- Using literals (single precision) ---~n")
 (describe 0.1s0)
