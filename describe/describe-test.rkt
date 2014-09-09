@@ -1,4 +1,4 @@
-#lang racket
+#lang racket/base
 ;;; describe-test.rkt
 ;;; Copyright (c) 2009-2010 M. Douglas Williams
 ;;;

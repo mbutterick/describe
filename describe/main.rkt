@@ -1,4 +1,4 @@
-#lang racket
+#lang racket/base
 ;;; main.rkt
 ;;; Copyright (c) 2009-2010 M. Douglas Williams
 ;;;
@@ -70,7 +70,9 @@
 ;;; 2.0.1    08/26/13 Added exact decimal value for floats. (MDW)
 ;;; 2.0.1    09/26/13 Added bigfloat support to float->string. (MDW)
 
-(require racket/extflonum
+(require racket/contract/base
+         racket/extflonum
+         racket/math
          racket/mpair)
 
 ;;; (variant x) -> symbol
