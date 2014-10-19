@@ -1,3 +1,4 @@
 #lang setup/infotab
-(define name "describe")
 (define collection 'multi)
+(define name "describe")
+(define deps '("base"))
