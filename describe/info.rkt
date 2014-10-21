@@ -12,3 +12,5 @@
         "possibility of extremely large value exhausting memory."))
 (define repositories '("4.x"))
 (define required-core-version "5.0")
+(define deps '("base" "compatibility-lib"))
+(define build-deps '("scribble-lib"))
