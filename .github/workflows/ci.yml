@@ -40,4 +40,4 @@ jobs:
       run: raco pkg install --auto --batch
 
     - name: run the tests
-      run: xvfb-run raco test -j 4 -p txexpr
+      run: xvfb-run raco test -j 4 -p describe
