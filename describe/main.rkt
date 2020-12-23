@@ -71,7 +71,6 @@
 ;;; 2.0.1    09/26/13 Added bigfloat support to float->string. (MDW)
 
 (require racket/contract/base
-         racket/extflonum
          racket/math
          racket/mpair)
 
@@ -307,7 +306,7 @@
          (format "~s is an exact number" z))))
 
 ;;; (float->string x) -> string?
-;;;   x : (or/c flonum? single-flonum? extflonum? bigfloat?)
+;;;   x : (or/c flonum? single-flonum? bigfloat?)
 ;;; Returns a string with the exact decimal representation of x. This is only
 ;;; guaranteed for floats - single, double, or extended precision, which are
 ;;; never repeating decimals.
@@ -402,6 +401,16 @@
          (inexact-number-description z))
         (else
          (format "~s is a number" z))))
+
+
+;;; 201223 Racket CS update
+;;; Racket CS does not support extflonums
+;;; so we remove racket/extflonum from depednencies
+;;; and make the extflonum functions into no-ops
+(define (extflonum? x) #false)
+(define (extfl< . xs) #false)
+(define (extfl> . xs) #false)
+(define (extfl->exact x) 0)
 
 ;;; (extflonum-description x) -> string
 ;;;   x : extflonum?
@@ -843,7 +852,7 @@
  (integer->string
   (-> exact-integer? string?))
  (float->string
-  (-> (or/c flonum? single-flonum? extflonum?) string?))
+  (-> (or/c flonum? single-flonum?) string?))
  (description
   (-> any/c string?))
  (describe
