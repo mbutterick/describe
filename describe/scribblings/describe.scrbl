@@ -14,7 +14,7 @@
 This library provides functions to describe Racket objects. Currently, the following types of objects are described:
 
 
-@margin-note{This is not the official version of Describe. It is the 1.5 version from PLaneT, retooled to use Racket's current package system, and with bigfloats disabled (because of incompatibility with v.5.3) and extflonums disabled (because of incompatibility with Racket CS). The canonical version of Describe is on the @link["http://planet.racket-lang.org/display.ss?package=describe.plt&owner=williams" "PLaneT server"]. — MB}
+@margin-note{This is not the official version of Describe. It is the 1.5 version from PLaneT, retooled to use Racket's current package system, but with bigfloats disabled (because of incompatibility with v.5.3) and extflonums disabled (because of incompatibility with Racket CS). Under Racket CS, I've also found that complex numbers with inexact coefficients for the imaginary part also seem to crash. So maybe stay away from those. The canonical version of Describe is on the @link["http://planet.racket-lang.org/display.ss?package=describe.plt&owner=williams" "PLaneT server"]. — MB}
 
 @itemize{
   @item{Booleans}
