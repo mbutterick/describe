@@ -405,7 +405,7 @@
 
 ;;; 201223 Racket CS update
 ;;; Racket CS does not support extflonums
-;;; so we remove racket/extflonum from depednencies
+;;; so we remove racket/extflonum from dependencies
 ;;; and make the extflonum functions into no-ops
 (define (extflonum? x) #false)
 (define (extfl< . xs) #false)
