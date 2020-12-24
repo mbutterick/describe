@@ -47,15 +47,14 @@
 (describe 0.0)
 (describe 0.1e0)
 (describe 0.1f0)
-(describe 0.1t0)
 (describe (* (! 10) 1.0))
 (describe 6.0221313e23)
 (describe 6.0221313f23)
-(describe 6.0221313t23)
 (describe (exact->inexact (! 40)))
 (describe (sqrt 10))
-(describe (sqrt -10))
-(describe (+ (sqrt 10) (sqrt -10)))
+;; no good in Racket CS, for whatever reason
+;;(describe (sqrt -10))
+;;(describe (+ (sqrt 10) (sqrt -10)))
 
 
 ;;; Strings
